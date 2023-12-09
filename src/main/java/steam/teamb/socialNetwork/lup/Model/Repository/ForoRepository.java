@@ -1,4 +1,4 @@
 package steam.teamb.socialNetwork.lup.Model.Repository;
 
-public class ForoRepository {
+public interface ForoRepository {
 }
