@@ -1,5 +1,10 @@
 package steam.teamb.socialNetwork.lup.Model.Repository;
 
-public interface PublicacionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import steam.teamb.socialNetwork.lup.Model.Entity.Publicacion;
+
+@Repository
+public interface PublicacionRepository extends JpaRepository<Publicacion, Long> {
 
 }
