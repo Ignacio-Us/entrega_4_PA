@@ -1,4 +1,4 @@
-package steam.teamb.socialNetwork.lup.Model.Entity;
+package steam.teamb.socialNetwork.lup.Model;
 
 public class Publicacion {
 
