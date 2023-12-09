@@ -1,18 +1,21 @@
 package steam.teamb.socialNetwork.lup.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import steam.teamb.socialNetwork.lup.Model.Publicacion;
 import steam.teamb.socialNetwork.lup.Repository.PublicacionRepository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Service
+@RequiredArgsConstructor
 public class PublicacionService {
 
-    @Autowired
-    PublicacionRepository publicacionRepository;
+    private final PublicacionRepository publicacionRepository;
+
+    public void crearPublicacion(Publicacion publicacion){
+        publicacionRepository.save(publicacion);
+    }
 
     public ArrayList<Publicacion> obtenerPublicacion(){
         return (ArrayList<Publicacion>) publicacionRepository.findAll();
