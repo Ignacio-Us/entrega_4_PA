@@ -1,54 +1,17 @@
 package steam.teamb.socialNetwork.lup.Service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import steam.teamb.socialNetwork.lup.DTO.PublicacionDTO;
 import steam.teamb.socialNetwork.lup.Model.Publicacion;
-import steam.teamb.socialNetwork.lup.Model.Usuario;
-import steam.teamb.socialNetwork.lup.Repository.PublicacionRepository;
-import steam.teamb.socialNetwork.lup.Repository.UsuarioRepository;
 
 import java.util.ArrayList;
 
-@Service
-@RequiredArgsConstructor
-public class PublicacionService {
+public interface PublicacionService {
 
-    private final PublicacionRepository publicacionRepository;
-    private final UsuarioRepository usuarioRepository;
+    void crearPublicacion(Publicacion publicacion);
+    ArrayList<Publicacion> obtenerPublicacion();
+    void borrarPublicacion(Long id);
+    Publicacion buscarPublicacionPorId(Long id);
+    void editarPublicacion(Publicacion publicacion);
+    ArrayList<PublicacionDTO> mostrarPublicacionPorIdUsuario(Long idUsuario);
 
-    public void crearPublicacion(Publicacion publicacion){
-        publicacionRepository.save(publicacion);
-    }
-
-    public ArrayList<Publicacion> obtenerPublicacion(){
-        return (ArrayList<Publicacion>) publicacionRepository.findAll();
-    }
-
-    public void borrarPublicacion(Long id) {
-        publicacionRepository.deleteById(id);
-    }
-
-    public Publicacion buscarPublicacionPorId(Long id) {
-        return publicacionRepository.findById(id).orElse(null);
-    }
-
-    public void editarPublicacion(Publicacion publicacion) {
-        publicacionRepository.save(publicacion);
-    }
-
-    public ArrayList<PublicacionDTO> mostrarPublicacionPorIdUsuario(Long idUsuario){
-        ArrayList <Publicacion> publicaciones= publicacionRepository.findByIdUsuario(idUsuario);
-        ArrayList <PublicacionDTO> publicacionesDTO = new ArrayList<>();
-
-        final Usuario usuario = usuarioRepository.findById(idUsuario).orElse(null);
-
-        for (Publicacion publicacion: publicaciones) {
-            publicacionesDTO.add(new PublicacionDTO(usuario != null ? usuario.getImagen() : "",
-                                                    usuario != null ? usuario.getNick_name() : "Desconocido",
-                                                    publicacion.getTitulo(), publicacion.getContenido()));
-        }
-        
-        return publicacionesDTO;
-    }
 }

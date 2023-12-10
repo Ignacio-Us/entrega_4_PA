@@ -3,8 +3,8 @@ package steam.teamb.socialNetwork.lup.Controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import steam.teamb.socialNetwork.lup.DTO.PublicacionDTO;
+import steam.teamb.socialNetwork.lup.Impl.PublicacionImpl;
 import steam.teamb.socialNetwork.lup.Model.Publicacion;
-import steam.teamb.socialNetwork.lup.Service.PublicacionService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PublicacionController{
 
-    private final PublicacionService publicacionService;
+    private final PublicacionImpl publicacionService;
 
     @GetMapping("publicaciones")
     @ResponseBody

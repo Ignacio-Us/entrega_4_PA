@@ -2,8 +2,8 @@ package steam.teamb.socialNetwork.lup.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import steam.teamb.socialNetwork.lup.Impl.BorradorPublicacionImpl;
 import steam.teamb.socialNetwork.lup.Model.BorradorPublicacion;
-import steam.teamb.socialNetwork.lup.Service.BorradorPublicacionService;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class BorradorPublicacionController {
 
-    private final BorradorPublicacionService borradorPublicacionService;
+    private final BorradorPublicacionImpl borradorPublicacionService;
 
     @GetMapping("borradores-publicaciones/{idUsuario}")
     @ResponseBody
@@ -29,7 +29,7 @@ public class BorradorPublicacionController {
     @PostMapping("borrador-publicacion")
     @ResponseBody
     public String crearBorradorPublicacion(@RequestBody BorradorPublicacion borradorPublicacion){
-        borradorPublicacionService.crearPublicacion(borradorPublicacion);
+        borradorPublicacionService.crearBorradorPublicacion(borradorPublicacion);
         return "Borrador Guardado";
     }
 
