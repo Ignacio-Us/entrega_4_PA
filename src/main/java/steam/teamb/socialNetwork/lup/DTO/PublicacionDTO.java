@@ -1,7 +1,5 @@
 package steam.teamb.socialNetwork.lup.DTO;
 
-import steam.teamb.socialNetwork.lup.Model.Usuario;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PublicacionDTO {
-
+    private String imagen;
     private String nick_name;
     private String titulo;
     private String contenido;
-
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/manejo_publicacion")
 @RequiredArgsConstructor
 public class PublicacionController{
 
@@ -33,13 +34,13 @@ public class PublicacionController{
         publicacionService.borrarPublicacion(id);
     }
 
-    @GetMapping("/persona/{id}")
+    @GetMapping("/publicacion/{id}")
     @ResponseBody
     public Publicacion buscarPublicacionPorId(@PathVariable Long id){
         return publicacionService.buscarPublicacionPorId(id);
     }
 
-    @PutMapping("/editando-publicacion")
+    @PutMapping("/editando_publicacion")
     public void editarPublicacion(@RequestBody Publicacion publicacion){
         publicacionService.editarPublicacion(publicacion);
     }

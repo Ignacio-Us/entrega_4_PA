@@ -9,7 +9,6 @@ import steam.teamb.socialNetwork.lup.Repository.PublicacionRepository;
 import steam.teamb.socialNetwork.lup.Repository.UsuarioRepository;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,10 +29,6 @@ public class PublicacionService {
         publicacionRepository.deleteById(id);
     }
 
-    public Publicacion guardarPublicacion(Publicacion publicacion){
-        return publicacionRepository.save(publicacion);
-    }
-
     public Publicacion buscarPublicacionPorId(Long id) {
         return publicacionRepository.findById(id).orElse(null);
     }
@@ -46,10 +41,12 @@ public class PublicacionService {
         ArrayList <Publicacion> publicaciones= publicacionRepository.findByIdUsuario(idUsuario);
         ArrayList <PublicacionDTO> publicacionesDTO = new ArrayList<>();
 
-        Usuario usuario = usuarioRepository.findById(idUsuario).orElse(null);
+        final Usuario usuario = usuarioRepository.findById(idUsuario).orElse(null);
 
         for (Publicacion publicacion: publicaciones) {
-            publicacionesDTO.add(new PublicacionDTO(usuario != null ? usuario.getNick_name() : "Desconocido", publicacion.getTitulo(), publicacion.getContenido()));
+            publicacionesDTO.add(new PublicacionDTO(usuario != null ? usuario.getImagen() : "",
+                                                    usuario != null ? usuario.getNick_name() : "Desconocido",
+                                                    publicacion.getTitulo(), publicacion.getContenido()));
         }
         
         return publicacionesDTO;
