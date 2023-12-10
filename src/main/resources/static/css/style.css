@@ -1,0 +1,23 @@
+.publicacion-titulo{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.publicacion-contenido{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.boton-publicar{
+    width: 90%;
+    cursor: pointer;
+    color: black;
+    background-color: snow;
+}
+
+.boton-guardar-borrador{
+    width: 90%;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}
