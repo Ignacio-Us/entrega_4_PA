@@ -8,33 +8,33 @@ import steam.teamb.socialNetwork.lup.Service.BorradorPublicacionService;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/manejo_borrador_publicacion")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class BorradorPublicacionController {
 
     private final BorradorPublicacionService borradorPublicacionService;
 
-    @PostMapping("/borrador_publicacion")
+    @GetMapping("borradores-publicaciones/{idUsuario}")
+    @ResponseBody
+    public ArrayList<BorradorPublicacion> mostrarPublicacionPorIdUsuario(@PathVariable Long idUsuario){
+        return borradorPublicacionService.mostrarBorradorPublicacionPorIdUsuario(idUsuario);
+    }
+
+    @GetMapping("borrador-publicacion/{id}")
+    @ResponseBody
+    public BorradorPublicacion buscarBorradorPublicacionPorId(@PathVariable Long id){
+        return borradorPublicacionService.buscarBorradorPublicacionPorId(id);
+    }
+
+    @PostMapping("borrador-publicacion")
     @ResponseBody
     public String crearBorradorPublicacion(@RequestBody BorradorPublicacion borradorPublicacion){
         borradorPublicacionService.crearPublicacion(borradorPublicacion);
         return "Borrador Guardado";
     }
 
-    @GetMapping("/borrador_publicacion/de/{idUsuario}")
-    @ResponseBody
-    public ArrayList<BorradorPublicacion> mostrarPublicacionPorIdUsuario(@PathVariable Long idUsuario){
-        return borradorPublicacionService.mostrarBorradorPublicacionPorIdUsuario(idUsuario);
-    }
-
-    @DeleteMapping("/borrador_publicacion/{id}")
+    @DeleteMapping("borrador-publicacion/{id}")
     public void borrarPublicacion(@PathVariable Long id){
         borradorPublicacionService.eliminarBorradorPublicacion(id);
-    }
-
-    @GetMapping("/borrador_publicacion/{id}")
-    @ResponseBody
-    public BorradorPublicacion buscarBorradorPublicacionPorId(@PathVariable Long id){
-        return borradorPublicacionService.buscarBorradorPublicacionPorId(id);
     }
 }

@@ -10,44 +10,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/manejo_publicacion")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class PublicacionController{
 
     private final PublicacionService publicacionService;
 
-    @PostMapping("/publicacion")
+    @GetMapping("publicaciones")
+    @ResponseBody
+    public List<Publicacion> mostrarPublicacion(){
+        return publicacionService.obtenerPublicacion();
+    }
+
+    @GetMapping("publicaciones/{idUsuario}")
+    @ResponseBody
+    public ArrayList<PublicacionDTO> mostrarPublicacionPorIdUsuario(@PathVariable Long idUsuario){
+        return publicacionService.mostrarPublicacionPorIdUsuario(idUsuario);
+    }
+
+    @GetMapping("publicacion/{id}")
+    @ResponseBody
+    public Publicacion buscarPublicacionPorId(@PathVariable Long id){
+        return publicacionService.buscarPublicacionPorId(id);
+    }
+
+    @PostMapping("publicacion")
     @ResponseBody
     public String crearPublicacion(@RequestBody Publicacion publicacion){
         publicacionService.crearPublicacion(publicacion);
         return "Publicacion creada";
     }
 
-    @GetMapping("/publicacion")
-    @ResponseBody
-    public List<Publicacion> mostrarPublicacion(){
-        return publicacionService.obtenerPublicacion();
-    }
-
-    @DeleteMapping("/publicacion/{id}")
-    public void borrarPublicacion(@PathVariable Long id){
-        publicacionService.borrarPublicacion(id);
-    }
-
-    @GetMapping("/publicacion/{id}")
-    @ResponseBody
-    public Publicacion buscarPublicacionPorId(@PathVariable Long id){
-        return publicacionService.buscarPublicacionPorId(id);
-    }
-
-    @PutMapping("/editando_publicacion")
+    @PutMapping("publicacion")
     public void editarPublicacion(@RequestBody Publicacion publicacion){
         publicacionService.editarPublicacion(publicacion);
     }
 
-    @GetMapping("/publicacion/de/{idUsuario}")
-    @ResponseBody
-    public ArrayList<PublicacionDTO> mostrarPublicacionPorIdUsuario(@PathVariable Long idUsuario){
-        return publicacionService.mostrarPublicacionPorIdUsuario(idUsuario);
+    @DeleteMapping("publicacion/{id}")
+    public void borrarPublicacion(@PathVariable Long id){
+        publicacionService.borrarPublicacion(id);
     }
 }
