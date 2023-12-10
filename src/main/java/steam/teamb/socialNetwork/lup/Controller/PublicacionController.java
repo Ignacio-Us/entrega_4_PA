@@ -2,32 +2,51 @@ package steam.teamb.socialNetwork.lup.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import steam.teamb.socialNetwork.lup.DTO.PublicacionDTO;
 import steam.teamb.socialNetwork.lup.Model.Publicacion;
 import steam.teamb.socialNetwork.lup.Service.PublicacionService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/publicacion")
 @RequiredArgsConstructor
 public class PublicacionController{
 
     private final PublicacionService publicacionService;
 
-    @PostMapping("/creando-publicacion")
+    @PostMapping("/publicacion")
+    @ResponseBody
     public String crearPublicacion(@RequestBody Publicacion publicacion){
         publicacionService.crearPublicacion(publicacion);
         return "Publicacion creada";
     }
 
-    @GetMapping("/mostrando-publicaciones")
+    @GetMapping("/publicacion")
+    @ResponseBody
     public List<Publicacion> mostrarPublicacion(){
         return publicacionService.obtenerPublicacion();
     }
 
-    @PutMapping("/editando-publicacion")
-    public String editarPublicacion(@RequestBody Publicacion publicacion){
+    @DeleteMapping("/publicacion/{id}")
+    public void borrarPublicacion(@PathVariable Long id){
+        publicacionService.borrarPublicacion(id);
+    }
 
-        return "Publicacion editada";
+    @GetMapping("/persona/{id}")
+    @ResponseBody
+    public Publicacion buscarPublicacionPorId(@PathVariable Long id){
+        return publicacionService.buscarPublicacionPorId(id);
+    }
+
+    @PutMapping("/editando-publicacion")
+    public void editarPublicacion(@RequestBody Publicacion publicacion){
+        publicacionService.editarPublicacion(publicacion);
+    }
+
+    @GetMapping("/publicacion/de/{idUsuario}")
+    @ResponseBody
+    public ArrayList<PublicacionDTO> mostrarPublicacionPorIdUsuario(@PathVariable Long idUsuario){
+        return publicacionService.mostrarPublicacionPorIdUsuario(idUsuario);
     }
 }
