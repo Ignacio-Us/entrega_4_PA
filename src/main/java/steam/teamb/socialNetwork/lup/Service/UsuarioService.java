@@ -35,8 +35,9 @@ public class UsuarioService {
         return usuarioRepo.findById(id).orElse(null);
     }
 
-
-    public void modificarUsuario(Usuario usuario) {
+    public void modificarUsuario(Usuario usuario)
+    {
+        usuarioRepo.save(usuario);
     }
 }
 

@@ -9,7 +9,7 @@ import steam.teamb.socialNetwork.lup.Service.UsuarioService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/datos_usuario")
 @RequiredArgsConstructor
 public class UsuarioController {
 
@@ -50,13 +50,6 @@ public class UsuarioController {
         usuarioService.modificarUsuario(usuario);
     }
 
-
-
-    @PostMapping
-    public void createUsuario(@RequestBody Usuario usuario)
-    {
-        usuarioService.crearUsuario(usuario);
-    }
 
 
 

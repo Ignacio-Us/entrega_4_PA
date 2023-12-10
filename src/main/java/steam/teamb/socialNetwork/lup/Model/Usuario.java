@@ -14,6 +14,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Basic
     private String nick_name;
     private String imagen;
 
