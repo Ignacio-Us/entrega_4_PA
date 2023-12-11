@@ -1,23 +1,109 @@
-.publicacion-titulo{
+.form-publicacion-titulo{
     display: flex;
     flex-wrap: nowrap;
+    width: 95%;
+    border-radius: 0.4rem;
+    margin-left: 15px;
+    padding: 10px;
+    font-family: Arial, serif;
+    font-weight: bold;
+    background-color: black;
+    color: white;
 }
 
-.publicacion-contenido{
+.form-publicacion-contenido{
     display: flex;
     flex-wrap: nowrap;
-}
-
-.boton-publicar{
-    width: 90%;
-    cursor: pointer;
-    color: black;
-    background-color: snow;
+    width: 95%;
+    height: 500px;
+    border-radius: 0.8rem;
+    margin-left: 15px;
+    padding: 10px;
+    font-family: Arial, serif;
+    background-color: black;
+    color: white;
 }
 
 .boton-guardar-borrador{
-    width: 90%;
+    height: 30px;
+    width: 120px;
     cursor: pointer;
     color: white;
     background-color: black;
+    border-radius: 1rem;
+    position: relative;
+    float: right;
+    margin-right: 25px;
+}
+
+.boton-publicar{
+    height: 30px;
+    width: 120px;
+    cursor: pointer;
+    color: black;
+    background-color: white;
+    border-radius: 1rem;
+    position: relative;
+    float: right;
+    margin-right: 15px;
+}
+
+.contenedor-form-publicacion{
+    background-color: goldenrod;
+    border-radius: 0.5rem;
+    flex-wrap: nowrap;
+    width: 70%;
+    height: 45%;
+    margin-left: 25px;
+    align-items: center;
+}
+.fondo{
+    background-color: black;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+label{
+    color: black;
+    font-size: large;
+    margin: 15px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+#contador-caracteres{
+    float: right;
+    color: rgb(45,45,45);
+    margin-right: 15px;
+    font-family: Arial, serif;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.img-reglas{
+    width: 300px;
+    height: 100px;
+    margin: 55px;
+}
+
+.reglas{
+    background-color: rgb(38,38,38);
+    color: aliceblue;
+    width: 80%;
+    height: 30%;
+    margin-left: 25px;
+    padding: 15px;
+    font-family: "Arial", serif;
+    font-weight: bold;
+}
+
+.politicas{
+    background-color: rgb(38,38,38);
+    color: aliceblue;
+    width: 80%;
+    height: 10%;
+    margin: 25px;
+    padding: 15px;
+    font-family: "Arial", serif;
+    font-weight: bold;
 }

@@ -36,9 +36,15 @@ public class PublicacionController{
 
     @PostMapping("publicacion")
     @ResponseBody
-    public String crearPublicacion(@RequestBody Publicacion publicacion){
+    public String crearPublicacion(@RequestParam("titulo") String titulo, @RequestParam("contenido") String contenido){
+
+        Publicacion publicacion = new Publicacion();
+        publicacion.setTitulo(titulo);
+        publicacion.setContenido(contenido);
+        publicacion.setIdUsuario(3L);
+
         publicacionService.crearPublicacion(publicacion);
-        return "Publicacion creada";
+        return "redirect:/home_social_network";
     }
 
     @PutMapping("publicacion")
