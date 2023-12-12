@@ -1,6 +1,7 @@
 package steam.teamb.socialNetwork.lup.Controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import steam.teamb.socialNetwork.lup.DTO.PublicacionDTO;
 import steam.teamb.socialNetwork.lup.Impl.PublicacionImpl;
@@ -9,7 +10,7 @@ import steam.teamb.socialNetwork.lup.Model.Publicacion;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class PublicacionController{
@@ -35,16 +36,12 @@ public class PublicacionController{
     }
 
     @PostMapping("publicacion")
-    @ResponseBody
     public String crearPublicacion(@RequestParam("titulo") String titulo, @RequestParam("contenido") String contenido){
 
-        Publicacion publicacion = new Publicacion();
-        publicacion.setTitulo(titulo);
-        publicacion.setContenido(contenido);
-        publicacion.setIdUsuario(3L);
+        Publicacion publicacion = new Publicacion(titulo,contenido,3L);
 
         publicacionService.crearPublicacion(publicacion);
-        return "redirect:/home_social_network";
+        return "home-social-network";
     }
 
     @PutMapping("publicacion")

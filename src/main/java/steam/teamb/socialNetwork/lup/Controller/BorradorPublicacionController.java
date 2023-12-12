@@ -29,14 +29,10 @@ public class BorradorPublicacionController {
     @PostMapping("borrador-publicacion")
     @ResponseBody
     public String crearBorradorPublicacion(@RequestParam("titulo") String titulo, @RequestParam("contenido") String contenido){
-        BorradorPublicacion borradorPublicacion = new BorradorPublicacion();
-
-        borradorPublicacion.setTitulo(titulo);
-        borradorPublicacion.setContenido(contenido);
-        borradorPublicacion.setIdUsuario(3L);
+        BorradorPublicacion borradorPublicacion = new BorradorPublicacion(titulo,contenido,3L);
 
         borradorPublicacionService.crearBorradorPublicacion(borradorPublicacion);
-        return "redirect:/home_social_network";
+        return "redirect:/home-social-network";
     }
 
     @DeleteMapping("borrador-publicacion/{id}")

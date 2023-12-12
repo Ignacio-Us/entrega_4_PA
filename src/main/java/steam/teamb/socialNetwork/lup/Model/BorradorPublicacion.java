@@ -18,4 +18,10 @@ public class BorradorPublicacion {
     private String titulo;
     private String contenido;
     private Long idUsuario;
+
+    public BorradorPublicacion(String titulo, String contenido, Long idUsuario) {
+        this.titulo = titulo;
+        this.contenido = contenido;
+        this.idUsuario = idUsuario;
+    }
 }
